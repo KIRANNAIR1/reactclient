@@ -1,0 +1,11 @@
+{
+  "main.js": "/reactclient/static/js/main.2e8d3b1f.chunk.js",
+  "main.js.map": "/reactclient/static/js/main.2e8d3b1f.chunk.js.map",
+  "runtime~main.js": "/reactclient/static/js/runtime~main.03e39d6a.js",
+  "runtime~main.js.map": "/reactclient/static/js/runtime~main.03e39d6a.js.map",
+  "static/js/2.ea35c62a.chunk.js": "/reactclient/static/js/2.ea35c62a.chunk.js",
+  "static/js/2.ea35c62a.chunk.js.map": "/reactclient/static/js/2.ea35c62a.chunk.js.map",
+  "index.html": "/reactclient/index.html",
+  "precache-manifest.c786b38c550442885c6d393a11957533.js": "/reactclient/precache-manifest.c786b38c550442885c6d393a11957533.js",
+  "service-worker.js": "/reactclient/service-worker.js"
+}
