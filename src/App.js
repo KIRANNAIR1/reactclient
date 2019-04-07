@@ -1,28 +1,70 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { UserIsAuthenticated, UserIsNotAuthenticated } from './helper/Auth';
+import AppNavbar from './components/layout/AppNavbar';
+import Dashboard from './components/layout/Dashboard';
+import store from './store';
+import { Provider } from 'react-redux';
+import AddClients from './components/clients/AddClients';
+import ClientDetails from './components/clients/ClientDetails';
+import EditClients from './components/clients/EditClients';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Settings from './components/settings/Settings';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <AppNavbar />
+            <div className="container">
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  component={UserIsAuthenticated(Dashboard)}
+                />
+                <Route
+                  exact
+                  path="/client/add"
+                  component={UserIsAuthenticated(AddClients)}
+                />
+                <Route
+                  exact
+                  path="/client/:id"
+                  component={UserIsAuthenticated(ClientDetails)}
+                />
+                <Route
+                  exact
+                  path="/client/edit/:id"
+                  component={UserIsAuthenticated(EditClients)}
+                />
+                <Route
+                  exact
+                  path="/login"
+                  component={UserIsNotAuthenticated(Login)}
+                />
+                <Route
+                  exact
+                  path="/register"
+                  component={UserIsNotAuthenticated(Register)}
+                />
+
+                <Route
+                  exact
+                  path="/settings"
+                  component={UserIsAuthenticated(Settings)}
+                />
+              </Switch>
+            </div>
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
 
 export default App;
+// to protect import redux-auth-wrapper
